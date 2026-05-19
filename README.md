@@ -1,20 +1,19 @@
-# 📚 Document RAG Engine
+# 📚 Document RAG Engine (Modern LCEL Architecture)
 
-An enterprise-ready, completely free-to-host Retrieval-Augmented Generation (RAG) application. This tool allows users to upload unstructured PDF documents, instantly processes and chunks the text, computes semantic embeddings, and builds a local vector store to provide accurate, context-aware answers to user queries using high-speed LLMs.
+An enterprise-ready, production-grade Retrieval-Augmented Generation (RAG) application. This tool allows users to upload unstructured PDF documents, dynamically processes and chunks the raw text, generates semantic vector embeddings, and constructs an in-memory vector space to answer highly complex queries with exact context-driven precision.
 
-By offloading embeddings and language processing to the Groq API, this application remains incredibly lightweight and fast, running seamlessly without requiring massive machine learning frameworks (like PyTorch) locally.
+This repository leverages **LangChain Expression Language (LCEL)**, bypassing legacy monolithic chain structures to ensure a future-proof, highly optimized execution pipeline.
 
 ## 🚀 Features
-* **PDF Ingestion & Text Extraction:** Dynamically reads uploaded PDFs and extracts text elements natively.
-* **Semantic Vector Search:** Tokenizes and splits text into optimized chunks using a recursive character text splitter, then generates mathematical vector embeddings.
-* **In-Memory Vector Database:** Uses FAISS (Facebook AI Similarity Search) to perform ultra-fast similarity lookups on local vector spaces.
-* **No Local ML Overhead:** Fully relies on Groq cloud architecture for both embeddings and reasoning, keeping local deployment footprints minimal.
-* **Context Auditing:** Transparency feature allowing developers to audit the exact text chunks extracted from the document that informed the AI's final answer.
+* **Nativized Document Ingestion:** Processes unstructured multi-page PDF records on the fly using `PyPDF`.
+* **Recursive Token Chunking:** Splits text elements using a `RecursiveCharacterTextSplitter` configured for an optimal `1000` token window with a `200` token semantic overlap.
+* **In-Memory Vector Search Index:** Builds a high-speed similarity mapping cluster using FAISS (Facebook AI Similarity Search).
+* **Modern LCEL Pipeline:** Uses LangChain's decoupled, declarative expression syntax (`inputs | prompt | llm | parser`) for deterministic execution.
+* **Context Auditing Engine:** A dedicated UI panel allowing developers and users to view the exact text chunks and page numbers pulled by the retriever to verify factual consistency.
 
 ## 🛠️ Tech Stack
-* **Frontend Interface:** [Streamlit](https://streamlit.io/)
-* **Orchestration Framework:** [LangChain](https://www.langchain.com/)
-* **Vector Database:** [FAISS (CPU)](https://github.com/facebookresearch/faiss)
-* **LLM Provider:** [Groq](https://groq.com/) (Model: `llama-3.1-8b-instant`)
-* **Embedding Model:** [Groq / Nomic](https://groq.com/) (Model: `nomic-embed-text-v1.5`)
-* **Document Parsing:** `PyPDF`
+* **Frontend Dashboard:** [Streamlit](https://streamlit.io/)
+* **Orchestration Architecture:** [LangChain (LCEL Core)](https://www.langchain.com/)
+* **Vector Storage Subsystem:** [FAISS (CPU variant)](https://github.com/facebookresearch/faiss)
+* **Inference Engine:** [Groq Cloud Ecosystem](https://groq.com/) (Model: `llama-3.1-8b-instant`)
+* **Embedding Cluster:** [Hugging Face Transformers](https://huggingface.co/) (Model: `all-MiniLM-L6-v2`)
